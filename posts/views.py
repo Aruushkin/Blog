@@ -8,7 +8,7 @@ from django.utils import timezone
 
 def hellow_view(request):
     if request.method == 'GET':
-        return HttpResponse("Hello! Its my project")
+        return HttpResponse("Hello! Its my project")g
 
 
 def redirect_to_youtube_view(request):
