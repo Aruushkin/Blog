@@ -1,26 +1,22 @@
-from django.shortcuts import HttpResponse, redirect
-from django.http import HttpResponse
-from django.utils import timezone
+from django.shortcuts import render
+
+from posts.models import Post
 
 
-# Create your views here.
-
-
-def hellow_view(request):
+def main_view(request):
     if request.method == 'GET':
-        return HttpResponse("Hello! Its my project")g
+        return render(request, 'layouts/index.html')
 
 
-def redirect_to_youtube_view(request):
+def posts_view(request):
     if request.method == 'GET':
-        return redirect('https://www.youtube.com')
+        posts = Post.objects.all()
+        context_data = {
+            'posts': posts
+        }
+        return render(request, 'posts/posts.html', context=context_data)
 
 
-def goodbye_view(request):
-    if request.method == 'GET':
-        return HttpResponse('Goodbye user!')
 
 
-def now_date(request):
-    current_date = timezone.now().date()
-    return HttpResponse(current_date)
+
