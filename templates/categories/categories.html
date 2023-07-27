@@ -1,8 +1,8 @@
-{% extends 'layouts/index.html' %}
+{% extends "layouts/index.html" %}
 
 {% block content %}
     <style type="text/css">
-        .posts {
+        .products {
             display: flex;
             justify-content: space-between;
             width: 80%;
@@ -11,20 +11,15 @@
         }
 
     </style>
-    <div class="posts">
-        {% for post in posts %}
+    <div class="categories">
+        {% for category in categories %}
             <div class="card" style="width: 18rem;">
                 <img src="..." class="card-img-top" alt="...">
                 <div class="card-body">
-                    <h5 class="card-title">{{ post.title }}</h5>
-                    {% for hashtag in post.gashtags.all %}
-                        <p>{{ hashtag.title }}</p>
-                    {% endfor %}
+                    <h5 class="card-title">{{ category.title }}</h5>
                     <a href="#" class="btn btn-primary">More</a>
                 </div>
             </div>
         {% endfor %}
     </div>
 {% endblock %}
-
-

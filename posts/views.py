@@ -17,6 +17,17 @@ def posts_view(request):
         return render(request, 'posts/posts.html', context=context_data)
 
 
+def hashtags_view(request):
+    if request.method == 'GET':
+        hashtags = Hashtag.objects.all()
+
+        context_data = {
+            'hashtags' : hashtags
+        }
+
+        return render(request, 'hashtags/hashtags.html', context=context_data)
+
+
 
 
 

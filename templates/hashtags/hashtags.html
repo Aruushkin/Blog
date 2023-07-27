@@ -1,0 +1,24 @@
+{% extends 'layouts/index.html' %}
+
+
+{% block content %}
+
+    <style type="text/css">
+        .hashtags {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            width: 70%;
+            margin-left: 15%;
+        }
+    </style>
+
+    <div class="hashtags">
+        {% for hashtag in hashtags %}
+        <a href="/posts/">
+            <h4>{{ hashtag.title }}</h4>
+        </a>
+        {% endfor %}
+    </div>
+
+{% endblock %}
