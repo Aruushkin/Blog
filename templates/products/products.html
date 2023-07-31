@@ -9,15 +9,22 @@
             margin-left: 10%;
             flex-wrap: wrap;
         }
+        .image > img {
+            width: 100%;
+        }
 
     </style>
     <div class="products">
         {% for product in products %}
             <div class="card" style="width: 18rem;">
+            <div class="image">
+                    <img src="/media/{{ product.image }}/" alt="">
+                {% if not product.image %}
                 <img src="..." class="card-img-top" alt="...">
+                {% endif %}
                 <div class="card-body">
                     <h5 class="card-title">{{ product.title }}</h5>
-                    <a href="#" class="btn btn-primary">More</a>
+                    <a href="/products/{{ product.id }}/" class="btn btn-primary">More</a>
                 </div>
             </div>
         {% endfor %}
