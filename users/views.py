@@ -4,12 +4,13 @@ from django.shortcuts import render, redirect
 from users.forms import RegisterForm, LoginForm
 from users.models import User
 
+
 def main_page_user_view(request):
-    context_data = {}  # Предварительное объявление переменной
+    context_data = {}
 
     if request.method == 'GET':
         users = User.objects.all()
-        context_data['users'] = users  # Добавляем users в контекст
+        context_data['users'] = users
 
     return render(request, 'layouts/index.html', context=context_data)
 
@@ -51,13 +52,13 @@ def login_view(request):
         form = LoginForm(data=request.POST)
 
         if form.is_valid():
-            """Authenticate """
+
             user = authenticate(
                 username=form.cleaned_data.get('username'),
                 password=form.cleaned_data.get('password')
             )
             if user:
-                """Authorization"""
+
                 login(request=request, user=user)
                 return redirect('/posts/')
             else:

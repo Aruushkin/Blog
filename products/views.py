@@ -62,7 +62,7 @@ def create_category_view(request):
     if request.method == 'POST':
         name = request.POST['name']
         Category.objects.create(name=name)
-        return redirect('categories_view')  # Перенаправляем пользователя на страницу с категориями
+        return redirect('categories_view')
 
     return render(request, 'products/create_category.html')
 

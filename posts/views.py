@@ -25,13 +25,10 @@ def posts_view(request):
         page = int(request.GET.get('page', 1))
 
         if search_text:
-            """startswith, endswith, icontains"""
             posts = posts.filter(Q(title__startswith=search_text) |
                                 Q(description__icontains=search_text))
 
-        """Pagination"""
         posts = posts[PAGINATION_LIMIT * (page - 1):PAGINATION_LIMIT * page]
-        """3:6"""
 
         context_data = {
             'posts': posts,
